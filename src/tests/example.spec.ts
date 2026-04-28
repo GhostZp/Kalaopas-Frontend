@@ -1,0 +1,7 @@
+// example unit test with vitest
+
+import {add} from '../utils/example';
+
+test('add function should correctly add two numbers', () => {
+    expect(add(2, 3)).toBe(5);
+});

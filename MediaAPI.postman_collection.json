@@ -1,0 +1,621 @@
+{
+  "info": {
+    "_postman_id": "49fed306-9dc3-4192-8fdf-709cb3465476",
+    "name": "MediaAPI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "1435435"
+  },
+  "item": [
+    {
+      "name": "register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\": \"your_username\",\n    \"password\": \"your_password\",\n    \"email\": \"your_username@metropolia.fi\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{authApi}}/api/v1/users",
+          "host": ["{{authApi}}"],
+          "path": ["api", "v1", "users"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\": \"ilkka\",\n    \"password\": \"your_password\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{authApi}}/api/v1/auth/login",
+          "host": ["{{authApi}}"],
+          "path": ["api", "v1", "auth", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "upload",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [""],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "your_token",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-access-token",
+            "value": "your_token.eyJ1c2VyX2lkIjozNjAxLCJ1c2VybmFtZSI6Imlsa2thbXRrIiwiZW1haWwiOiJpbGtrYW10a0BtZXRyb3BvbGlhLmZpIiwiZnVsbF9uYW1lIjpudWxsLCJpc19hZG1pbiI6bnVsbCwidGltZV9jcmVhdGVkIjoiMjAyMy0wOC0yNVQxMTo1NTozMi4wMDBaIiwiaWF0IjoxNjkzNTY0MDk3LCJleHAiOjE2OTM2NTA0OTd9.Nsq6aRgDSHSOwSgWC2k-1FiOxXxv8CxbgY2NZ_-54-A",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": "/Users/your_username/Downloads/kissa.jpg"
+            },
+            {
+              "key": "title",
+              "value": "Ile testaa",
+              "type": "text",
+              "disabled": true
+            },
+            {
+              "key": "description",
+              "value": "Katotaan onnistuuko video.",
+              "type": "text",
+              "disabled": true
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{uploadApi}}/api/v1/upload",
+          "host": ["{{uploadApi}}"],
+          "path": ["api", "v1", "upload"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "media",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "your_token",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"Example Video\",\n    \"description\": \"Example Description\",\n    \"filename\": \"your_token.eyJmaWxlbmFtZSI6IjIxZjE4ZWE3MTc0NTYxMzk0ODFmMThmYzNiZDhhYmY2IiwidXNlcl9pZCI6MiwiaWF0IjoxNzM4MDU2NzIxfQ.RZc-C0y79hQbaMUsk_AOpqDR_BDVRY424sNnRWAP6og.mov\",\n    \"media_type\": \"video/quicktime\",\n    \"filesize\": 6383337\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{mediaApi}}/api/v1/media",
+          "host": ["{{mediaApi}}"],
+          "path": ["api", "v1", "media"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "tag",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"tag_name\": \"example\",\n    \"media_id\": 3\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{mediaApi}}/api/v1/tags",
+          "host": ["{{mediaApi}}"],
+          "path": ["api", "v1", "tags"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "like",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"media_id\": 4\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{mediaApi}}/api/v1/likes",
+          "host": ["{{mediaApi}}"],
+          "path": ["api", "v1", "likes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "rating",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"rating_value\": 3,\n    \"media_id\": 4\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{mediaApi}}/api/v1/ratings",
+          "host": ["{{mediaApi}}"],
+          "path": ["api", "v1", "ratings"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "comment",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"comment_text\": \"Äääkkööösiii\",\n    \"media_id\": \"3\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{mediaApi}}/api/v1/comments",
+          "host": ["{{mediaApi}}"],
+          "path": ["api", "v1", "comments"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "check token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-access-token",
+            "value": "your_token.eyJ1c2VyX2lkIjozNjAxLCJ1c2VybmFtZSI6Imlsa2thbXRrIiwiZW1haWwiOiJpbGtrYW10a0BtZXRyb3BvbGlhLmZpIiwiZnVsbF9uYW1lIjpudWxsLCJpc19hZG1pbiI6bnVsbCwidGltZV9jcmVhdGVkIjoiMjAyMy0wOC0yNVQxMTo1NTozMi4wMDBaIiwiaWF0IjoxNjkzNTcwMzcwLCJleHAiOjE2OTM2NTY3NzB9.OWvW8NGNtHwcfjFYgWVBGiXOlCjXT4RfDf8XvIfzhwM",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{authApi}}/api/v1/users/token",
+          "host": ["{{authApi}}"],
+          "path": ["api", "v1", "users", "token"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get list of media",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{mediaApi}}/api/v1/media",
+          "host": ["{{mediaApi}}"],
+          "path": ["api", "v1", "media"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get media by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/v1/media/999999",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "v1", "media", "999999"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get most liked media",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/v1/media/73",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "v1", "media", "73"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get list of tags",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/v1/tags",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "v1", "tags"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get list of ratings",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/v1/ratings",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "v1", "ratings"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get list of comments",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{mediaApi}}/api/v1/comments",
+          "host": ["{{mediaApi}}"],
+          "path": ["api", "v1", "comments"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get list of likes",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{mediaApi}}/api/v1/likes",
+          "host": ["{{mediaApi}}"],
+          "path": ["api", "v1", "likes"]
+        }
+      },
+      "response": [
+        {
+          "name": "get list of likes",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://10.120.32.94/media-api/api/v1/likes/bymedia/user/15",
+              "protocol": "http",
+              "host": ["10", "120", "32", "94"],
+              "path": [
+                "media-api",
+                "api",
+                "v1",
+                "likes",
+                "bymedia",
+                "user",
+                "15"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sat, 27 Apr 2024 18:58:12 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Apache/2.4.57 (Rocky Linux) OpenSSL/3.0.7"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Content-Security-Policy",
+              "value": "default-src 'self';script-src 'self' 'unsafe-eval';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "80"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"50-3V3xAFFV8bpjjEq+RCwotAZnL+Q\""
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5, max=100"
+            },
+            {
+              "key": "Connection",
+              "value": "Keep-Alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"like_id\": 99,\n    \"media_id\": 15,\n    \"user_id\": 5,\n    \"created_at\": \"2024-02-24T21:02:51.000Z\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "get list of likes by media id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{mediaApi}}/api/v1/likes/bymedia/173",
+          "host": ["{{mediaApi}}"],
+          "path": ["api", "v1", "likes", "bymedia", "173"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get list of tags by media id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/v1/tags/bymedia/73",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "v1", "tags", "bymedia", "73"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get list of media by tag",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/v1/tags/bytagname/test-tag",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "v1", "tags", "bytagname", "test-tag"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get list of ratings by media id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/v1/ratings/bymedia/73",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "v1", "ratings", "bymedia", "73"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get list of ratings by user id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/v1/ratings/byuser/7",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "v1", "ratings", "byuser", "7"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get list average rating of media",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/v1/ratings/average/73",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "v1", "ratings", "average", "73"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get list of users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{authApi}}/api/v1/users",
+          "host": ["{{authApi}}"],
+          "path": ["api", "v1", "users"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "check username available",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{authApi}}/api/v1/users/username/ilkka",
+          "host": ["{{authApi}}"],
+          "path": ["api", "v1", "users", "username", "ilkka"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get likes count by media id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{mediaApi}}/api/v1/likes/count/87",
+          "host": ["{{mediaApi}}"],
+          "path": ["api", "v1", "likes", "count", "87"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get likes by user id and media id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{mediaApi}}/api/v1/likes/bymedia/user/87",
+          "host": ["{{mediaApi}}"],
+          "path": ["api", "v1", "likes", "bymedia", "user", "87"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get likes by user",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{mediaApi}}/api/v1/likes/byuser/41",
+          "host": ["{{mediaApi}}"],
+          "path": ["api", "v1", "likes", "byuser", "41"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "your_token.eyJ1c2VyX2lkIjoyLCJsZXZlbF9uYW1lIjoiQWRtaW4iLCJpYXQiOjE3Njk1OTk1MTh9.kyma_lSXsPsNDPPLAk25kSLMl8ucngTDR4cooL8H_js",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "mediaApi",
+      "value": "https://media2.edu.metropolia.fi/media-api"
+    },
+    {
+      "key": "uploadApi",
+      "value": "https://media2.edu.metropolia.fi/upload-api"
+    },
+    {
+      "key": "authApi",
+      "value": "https://media2.edu.metropolia.fi/auth-api"
+    },
+    {
+      "key": "localUploadApi",
+      "value": "http://localhost:3002"
+    }
+  ]
+}
