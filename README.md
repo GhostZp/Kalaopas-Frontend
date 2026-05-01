@@ -1,5 +1,8 @@
 ### Monialustaprojekti Annan Kalaopas 2026
 
+Projektin inspiraationa toimi WWF:n kalaopas: 
+https://wwf.fi/ruoka/kalaopas/
+
 Linkki julkaistuun sovellukseen: 
 https://users.metropolia.fi/~annakall/Kalaopas/
 
